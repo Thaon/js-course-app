@@ -1,12 +1,11 @@
-const axios = require("axios");
-
-const fetchTasks = async () => {
-  try {
-    const response = await axios.get("http://192.168.1.191:1337/api/tasks");
-    console.log(response.data);
-  } catch (error) {
-    console.log(error);
-  }
+const awaitableFunction = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  return 25;
 };
 
-fetchTasks();
+const main = async () => {
+  let n = await awaitableFunction();
+  console.log(n);
+};
+
+main();
